@@ -1,5 +1,11 @@
 # src/tools/arxiv_tool.py (enhanced)
+import time
+from typing import List
+
+import arxiv
 from langchain_core.tools import tool
+
+from src.tools.retry import retry_with_backoff
 
 @tool
 @retry_with_backoff(max_retries=3, base_delay=1.0)
